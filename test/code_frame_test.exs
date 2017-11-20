@@ -3,12 +3,14 @@ defmodule CodeFrameTest do
   alias IO.ANSI
 
   test "prints before" do
-    res = CodeFrame.build("foo\nbar\nbob", 1)
+    res = CodeFrame.build("foo\nbar\nbob", 1, colors: false)
     assert res == "  1 | foo\n> 2 | bar\n    | ^^^\n  3 | bob"
   end
 
   test "respect line before and after" do
-    res = CodeFrame.build("foo\nbar\nbob\nboof", 2, lines_after: 1, lines_before: 1)
+    res =
+      CodeFrame.build("foo\nbar\nbob\nboof", 2, lines_after: 1, lines_before: 1, colors: false)
+
     assert res == "  2 | bar\n> 3 | bob\n    | ^^^\n  4 | boof"
   end
 
@@ -21,7 +23,8 @@ defmodule CodeFrameTest do
     res =
       CodeFrame.build(
         "foo\nbar\nbob\nboof\nfos\nasd\nasd\nasd\nasd\nasd\nasd\nasd",
-        9
+        9,
+        colors: false
       )
 
     assert String.starts_with?(res, "  ")

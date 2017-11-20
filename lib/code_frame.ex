@@ -28,7 +28,7 @@ defmodule CodeFrame do
     count = length(lines)
 
     # Parse Options
-    showColors = Keyword.get(options, :colors, false)
+    showColors = Keyword.get(options, :colors, ANSI.enabled?())
     l_before = max(line_pos - Keyword.get(options, :lines_before, 2), 0)
     l_after = min(line_pos + Keyword.get(options, :lines_after, 2), count)
 
