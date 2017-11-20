@@ -26,22 +26,22 @@ defmodule CodeFrame do
     count = length(lines)
 
     # Parse Options
-    shouldHighlight = Keyword.get(options, :highlight, false)
+    showColors = Keyword.get(options, :colors, false)
     l_before = max(line_pos - Keyword.get(options, :lines_before, 2), 0)
     l_after = min(line_pos + Keyword.get(options, :lines_after, 2), count)
 
     lines
     |> Enum.with_index()
     |> Enum.filter(fn {_, i} -> i >= l_before and i <= l_after end)
-    |> Enum.map(fn {x, i} -> print_column(x, i + 1, i == line_pos, shouldHighlight, count) end)
+    |> Enum.map(fn {x, i} -> print_column(x, i + 1, i == line_pos, showColors, count) end)
     |> Enum.join("\n")
   end
 
-  defp print_column(content, line, active, highlight, total) do
+  defp print_column(content, line, active, showColors, total) do
     diff = length(Integer.digits(total, 10)) - length(Integer.digits(line, 10))
     indent = String.duplicate(" ", diff)
 
-    if highlight do
+    if showColors do
       print_column_colors(content, line, active, indent)
     else
       print_column_raw(content, line, active, indent)
