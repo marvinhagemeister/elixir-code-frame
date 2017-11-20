@@ -1,17 +1,15 @@
 # CodeFrame
 
-**TODO: Add description**
+Build code frames that point to a specific location. Inspired by [@babel/code-frame](https://github.com/babel/babel/tree/master/packages/babel-code-frame).
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `code_frame` to your list of dependencies in `mix.exs`:
+The package can be installed by adding `code_frame` to your list of
+ dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [
-    {:code_frame, "~> 0.1.0"}
-  ]
+  [{:code_frame, "~> 0.1.0"}]
 end
 ```
 

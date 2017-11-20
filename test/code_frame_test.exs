@@ -2,8 +2,6 @@ defmodule CodeFrameTest do
   use ExUnit.Case
   alias IO.ANSI
 
-  doctest CodeFrame
-
   test "prints before" do
     res = CodeFrame.build("foo\nbar\nbob", 1)
     assert res == "  1 | foo\n> 2 | bar\n    | ^^^\n  3 | bob"
@@ -15,7 +13,7 @@ defmodule CodeFrameTest do
   end
 
   test "prints colors" do
-    res = CodeFrame.build("foo\nbar\nbob\nboof", 1, highlight: true)
+    res = CodeFrame.build("foo\nbar\nbob\nboof", 1, colors: true)
     assert res =~ ANSI.red()
   end
 
@@ -34,9 +32,10 @@ defmodule CodeFrameTest do
       CodeFrame.build(
         "foo\nbar\nbob\nboof\nfos\nasd\nasd\nasd\nasd\nasd\nasd\nasd",
         9,
-        highlight: true
+        colors: true
       )
 
+      IO.puts("\n" <>res)
     assert String.starts_with?(res, ANSI.light_black() <> "  ")
   end
 end
