@@ -2,23 +2,25 @@ defmodule CodeFrame do
   alias IO.ANSI
 
   @moduledoc """
-  Documentation for CodeFrame.
+  Generate an excerpt of a string and highlight a specific line
   """
 
   @doc """
-  Hello world.
+  Generate the code frame with the given string.
 
   ## Examples
 
-      iex> CodeFrame.hello
-      :world
+  Without coloring:
 
+  ```bash
+  iex> CodeFrame.build(myString, 5, colors: false)
+    4 | something
+  > 5 | highlighted line
+      | ^^^^^^^^^^^^^^^^
+    6 | something
+  ```
   """
-  def hello do
-    :world
-  end
-
-  @type options :: []
+  @type options :: [lines_before: integer, lines_after: integer, colors: boolean]
 
   @spec build(String.t(), integer, options) :: String.t()
   def build(input, line_pos, options \\ []) do
