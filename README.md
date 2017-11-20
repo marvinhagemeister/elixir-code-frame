@@ -31,10 +31,9 @@ defmodule Foo do
 
   def main() do
     my_string = "foo\nbar\nbaz"
-
-    # Args: build(string, highlighted_line, options)
-    frame = build(my_string, 1, colors: true)
-
+    
+    frame = build(my_string, 1)
+    
     IO.puts(frame)
   end
 end
