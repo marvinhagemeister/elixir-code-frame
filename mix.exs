@@ -9,11 +9,16 @@ defmodule CodeFrame.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
 
+      # Hex
+      description: "Generate an excerpt of a string and highlight a specific line",
+      package: package(),
+
       # Docs
       name: "CodeFrame",
       source_url: "https://github.com/marvinhagemeister/elixir-code-frame",
       docs: [
-        main: "CodeFrame", # The main page in the docs
+        # The main page in the docs
+        main: "CodeFrame",
         extras: ["README.md"]
       ]
     ]
@@ -32,6 +37,14 @@ defmodule CodeFrame.MixProject do
       {:ex_doc, "~> 0.16", only: :dev, runtime: false},
       {:dialyxir, "~> 0.5", only: :dev, runtime: false},
       {:exfmt, "~> 0.2", only: :dev}
+    ]
+  end
+
+  defp package do
+    [
+      maintainers: ["Marvin Hagemeister <marvin@marvinhagemeister.de>"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/marvinhagemeister/elixir-code-frame"}
     ]
   end
 end
