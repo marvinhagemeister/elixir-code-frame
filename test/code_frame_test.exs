@@ -35,7 +35,6 @@ defmodule CodeFrameTest do
         colors: true
       )
 
-      IO.puts("\n" <>res)
     assert String.starts_with?(res, ANSI.light_black() <> "  ")
   end
 end
